@@ -58,6 +58,24 @@ nim dif = do putStrLn (display initialBoard)
 
 getRandN (a, b) g = fst $ randomR (a, b) g
 
+-- Integer to binary integer
+toBinInt :: Int -> Int
+toBinInt x = binListToInt (toBin x)
+
+-- Digits list to integer:
+binListToInt :: [Int] -> Int
+binListToInt [] = 0
+binListToInt (x:xs) = (x * (10 ^ length xs)) + binListToInt xs
+
+-- Integer to binary:
+toBin :: Int -> [Int]
+toBin 0 = [0]
+toBin n = reverse (helper n)
+
+helper :: Int -> [Int]
+helper 0 = []
+helper n = let (q,r) = n `divMod` 2 in r : helper q
+
 -- The turn method displays the player and asks for a movement, then checks if
 -- there was a problem performing that movement and continues the game. This is
 -- the main game loop
@@ -90,7 +108,9 @@ turn board player dif = do if player == One
                                                                     turn board player dif
                                                             else isOver (fromJust newBoard) (change player) dif 
                                       else do if dif == 'd' 
-                                              then putStrLn "Nível Difícil não implementado ainda"
+                                              then do --putStrLn "Nível Difícil não implementado ainda"
+                                                      let sumPalitosBin = sum [toBinInt x | x <- Fol.toList board]
+                                                      putStrLn (show sumPalitosBin)
                                               else putStrLn "Dificuldade Inválida"
 
 -- isOver checks if the Board is empty, and checks whether the game is over or
