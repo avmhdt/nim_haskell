@@ -1,3 +1,10 @@
+{-
+Trabalho 2 Linguagem de Programação
+Autores:
+José Santos Sá Carvalho - 201665557C
+Júlia Almeida Valadares - 
+-}
+
 import qualified Data.Sequence as Seq
 import qualified Data.Foldable as Fol
 import qualified Data.List as List
