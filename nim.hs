@@ -2,7 +2,7 @@
 Trabalho 2 Linguagem de Programação
 Autores:
 José Santos Sá Carvalho - 201665557C
-Júlia Almeida Valadares - 
+Júlia Almeida Valadares - 201765562AC
 -}
 
 import qualified Data.Sequence as Seq
